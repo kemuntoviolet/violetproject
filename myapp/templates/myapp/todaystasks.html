@@ -38,6 +38,7 @@
             <div class="contentWrapper">
                 <h1>Tasks Scheduled for Today: {{ today_date }}</h1>
 
+                <a href="{% url 'home' %}">Back to Home</a>
                 {% if today_tasks %}
                     <ul>
                         {% for task in today_tasks %}
@@ -53,7 +54,7 @@
                     <p>No tasks scheduled for today.</p>
                 {% endif %}
             
-                <a href="{% url 'home' %}">Back to Home</a>
+                
               
 
                 

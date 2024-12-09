@@ -1,0 +1,43 @@
+Welcome to Vtasks, a productivity web app for scheduling your tasks now and for the future.
+
+Setup process
+The app use Mysql as its database due to its simplicity to use and integrate
+
+In violetproject/violetproject/settings.py:
+1. Install mysql and configure as follows:
+    a. Create a database named vtasks'.
+    b. create a user 'violet' and give them all privileges over the database.
+    c. The password for the user should be fOGC@4201 or any that you wish as long as you ensure consistency with settings.py file configs.
+
+Later in the settings.py
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'vtasks',
+        'USER': 'violet',
+        'PASSWORD': 'fOGC@4201',
+        'HOST': 'localhost',  # Or the database server's IP address
+        'PORT': '3306',       # Default MySQL port
+    }
+}
+
+
+
+
+2. The app works out of the box but requires a user account to work and thus you need to sign up first
+3. To run the app
+clone the repository to your location of choice.
+
+    cd violetproject;
+    python3 manage.py runserver(linux) OR python manage.py runserver(Windows)
+    Navigate to your browser and open  localhost:8000
+
+4. You are automatically redirected to login page -> click signup(for fist time users) -> Enter your information
+5. Functionality available 
+    a. Creating tasks(allows you to create a category and schedule your task)
+    b. Adding tasks to already existing categories(can be done under each category in the home page)
+    c. Viewing future and past tasks
+    d. Marking tasks as complete
+    e. Deleting tasks
+

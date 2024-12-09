@@ -1,4 +1,4 @@
-
+-- Our database schema
 
 CREATE TABLE tasks(
     taskID int UNSIGNED AUTO_INCREMENT,

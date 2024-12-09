@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from datetime import date, datetime
 import logging
 from django.utils.timezone import now
-# Create your views here.
+
 
 #login view
 #def index(request):
@@ -55,30 +55,6 @@ def search(request):
 def home(request):
 	
 	return render(request, 'myapp/home.html')
-
-
-#Addcategory
-
-@login_required
-def addcategory(request):
-    if request.method == 'POST':
-        category_name = request.POST.get('categoryName')
-
-        if category_name:
-            try:
-                category = Category(categoryName=category_name, categoryOwner=request.user.username)
-                category.save()
-                messages.success(request, 'Category added successfully!')
-                return redirect('home')  # Replace 'home' with your desired redirect route
-            except Exception as e:
-                messages.error(request, f"An error occurred: {e}")
-        else:
-            messages.error(request, 'Category name is required.')
-
-    return render(request, 'myapp/addcategory.html')
-  
-  
-  
   
 #signup view
 def signup(request):
@@ -116,26 +92,7 @@ def today_tasks(request):
         })
     return redirect('home')  # Redirect if not a POST request
 
-#viewalltasks view
-@login_required
-def viewalltasks(request):
-    if request.method == 'POST' and request.POST.get('view_all_tasks') == 'view_all_tasks':
-        current_user = request.user.username
-        
-        # Fetch all categories owned by the user
-        user_categories = Category.objects.filter(categoryOwner=current_user)
-        
-        # Create a dictionary to map categories to their tasks
-        category_tasks_map = {
-            category: Task.objects.filter(taskCategory=category) for category in user_categories
-        }
-        
-        context = {
-            'category_tasks_map': category_tasks_map
-        }
-        return render(request, 'myapp/viewalltasks.html', context)
 
-    return render(request, 'myapp/viewalltasks.html')
 
 def about(request):
 

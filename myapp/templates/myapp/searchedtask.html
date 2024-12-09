@@ -9,7 +9,7 @@
     <head>
         <title>Home</title>
         <link rel="stylesheet" type="text/css" href="{% static 'myapp/styles.css' %}">
-        <script src="{% static 'myapp/script.js' %}"></script>
+   
     </head>
     <body>           
         <header>
@@ -20,7 +20,9 @@
                     <h1>:Search</h1>
                 </div>
 
-                <form action="" method="POST" id="searchForm">                 
+                <form action="{% url 'search' %}" method="POST" id="searchForm">
+                    {% csrf_token %}
+                    <label for="taskname">Search</label>
                     <input type="text" name="taskname" id="taskname" placeholder="Search tasks by name..." required>
                             
                     <input type="submit">
@@ -37,6 +39,7 @@
         </header>
         <main>
             <div class="contentWrapper">
+                <a href="{% url 'home' %}">Back to Home</a>
                 {% if tasks %}
                 <ul>
                     {% for task in tasks %}

@@ -8,7 +8,7 @@
     <head>
         <title>Home</title>
         <link rel="stylesheet" type="text/css" href="{% static 'myapp/styles.css' %}">
-        <script src="{% static 'myapp/script.js' %}"></script>
+        
     </head>
     <body>           
         <header>
@@ -19,7 +19,9 @@
                     <h1>:New Tasks</h1>
                 </div>
 
-                <form action="" method="POST" id="searchForm">                 
+                <form action="{% url 'search' %}" method="POST" id="searchForm">
+                    {% csrf_token %}
+                    <label for="taskname">Search</label>
                     <input type="text" name="taskname" id="taskname" placeholder="Search tasks by name..." required>
                             
                     <input type="submit">
@@ -36,13 +38,16 @@
         </header>
         <main>
             <div class="contentWrapper">
+                <a href="{% url 'home' %}">Back to Home</a>
+                
                 <form action="{% url 'create_task' %}" method="POST" class="functionalityForms">
+                    <h3 style="font-weight:bold;">TASK CREATION FORM</h3>
                     {% csrf_token %}
                 
                     <label for="taskName">Enter Task Name:</label>
                     <input type="text" name="taskName" id="taskName" placeholder="Enter task name ..." required>
                 
-                    <label for="taskDescription">Enter Task Description (what you want to achieve):</label>
+                    <label for="taskDescription">Enter Task Description (what you want to achieve for that task):</label>
                     <textarea name="taskDescription" id="taskDescription" cols="50" rows="10" placeholder="Enter task details..." required></textarea>
                 
                     <label for="taskCategory">Task Category:</label><br>
