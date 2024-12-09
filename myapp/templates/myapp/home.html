@@ -77,11 +77,12 @@
 
                     {% if messages %}
                     <div id="responses">
-                        <button title="close" class="closeFormsButtons" onclick="closeResponsesBox()"><img src="{% static 'myapp/assets/close2_icon.png' %}" height="30px" width="30px" alt=""></button>
+                        
                         <ul>
                             {% for message in messages %}
                             <li>
-                                <p id="responses">{{ message }}</p>
+                                
+                                <p id="responses" style="color:white;background-color:red;width:fit-content;padding:5px 5px 5px 5px;">{{ message }}</p>
                             </li>
                             {% endfor %}
                         </ul>
