@@ -1,0 +1,282 @@
+*{
+	box-sizing: border-box;
+}
+
+html {
+    margin: 0px;
+    height:auto;
+    width: 100%;
+    scroll-behavior: smooth;
+}
+body{
+    background-color: white;
+    /*background: linear-gradient(to bottom, #e9c6afff 30% , aqua 70%);*/
+    /*background-image: url("./Assets/image102.jpg");*/
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    position: relative;
+  
+    
+}
+/*************************************GLOBALS*******************************************/
+p{
+    font-size: 20px;
+
+}
+
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+    color: blue;
+}
+h2{
+    text-align: center;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #00B8FF;
+    margin-bottom: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    border-bottom: 1px inset black;
+}
+.headerContent{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 15%;
+    margin-right: 15%;
+
+}
+.logoutBtn:hover{
+    border: 1px solid red;
+    cursor: pointer;
+    text-decoration: underline;
+    color: red;
+}
+.headerTitleContainer{
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#searchForm{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+.userContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+}
+input[type=text]{
+    padding: 5px 5px 5px 10px;
+    width: 80%;
+    height: 30px;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+input[type=password]{
+    padding: 5px 5px 5px 10px;
+    width: 80%;
+    height: 30px;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+input[type=submit]{
+    border: 1px solid black;
+    border-radius: 10px;
+    width: fit-content;
+    height: 30px;
+    margin: 10px;
+}
+input[type=email]{
+    padding: 5px 5px 5px 10px;
+    width: 80%;
+    height: 30px;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+input[type=submit]:hover{
+    background-color: red;
+    cursor: pointer;
+    color: white;
+}
+label{
+    font-weight: bold;
+}
+textarea{
+    border-radius: 10px;
+    padding: 5px 5px 5px 10px;
+}
+marquee{
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+
+
+/**************************************************MAIN CONTENT WRAPPER********************************************/
+main{
+    height: fit-content;
+}
+.contentWrapper{
+    margin-left: 15%;
+    margin-right: 15%;
+    height: 90vh;
+}
+#responses{
+    height: fit-content;
+}
+
+/*HOME*/
+nav{
+    margin-left: 20%;
+    margin-right: 20%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #adadad;
+    width: fit-content;  
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+}
+
+.functionBtn{
+    height: 100%;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+
+}
+.functionBtn:hover{
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    
+}
+.all_categories{
+    width: 100%;
+}
+
+/* FUnctionality forms */
+.functionalityFormsWrapper{
+
+    position: fixed;
+    background-color: aqua;
+    padding: 10px 10px 10px 10px;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    top:30%;
+    left:25%;
+    right: 25%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+}
+.functionalityForms{
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+}
+.closeFormsButtons{
+    border: 1px solid #e8e8e8;
+    border-radius: 15px; 
+    background-color: white;
+    position: absolute;
+    top:-10px;
+    right: 0;
+}
+.closeFormsButtons:hover{
+    background-color: red;
+    cursor: pointer;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+
+}
+#addTasks{
+    display: none;
+
+}
+#addNewCategory{
+    display: none;
+}
+
+
+/*Index.html*/
+.loginFormWrapper{
+    background-color: #00B8FF;
+    padding: 10px 10px 10px 10px;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 10%;
+    border: 1px solid black;
+    height: 70vh;
+    border-radius: 10px;
+}
+#loginForm{
+    display: flex;
+    flex-direction: column;
+  
+}
+#signUpForm{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/*signup.html*/
+
+
+/*Todaystasks.html*/
+
+
+/*Viewalltasks.html*/
+
+footer{
+    padding: 10px 0px 10px 0px;
+    background-color: #00B8FF;
+    height: 20vh;
+    width: 100%;
+}
+.footerContent{
+    height: fit-content;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+.contacts{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.contactsItem{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 10px;
+}

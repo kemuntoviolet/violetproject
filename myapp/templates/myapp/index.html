@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'myapp/styles.css' %}">
+        <script src="{% static 'myapp/script.js' %}"></script>
+    </head>
+    <body>
+        <main>
+            <div class="contentWrapper">                
+                <div class="loginFormWrapper">
+                    <img src="{% static 'myapp/assets/vtasklogoF.png' %}" height="100px" width="100px" alt="">&nbsp;
+                    <p><strong>Login Page</strong></p>
+                    <p>Welcome to Vtasks, your one stop shop for managing your daily tasks.Improve your productivity with Vtasks</p> 
+                    <form method="POST">
+                        {% csrf_token %}  <!-- CSRF token for security -->
+                
+                        <!-- Render form fields (username and password) -->
+                        <div>
+                            <label for="{{ form.username.id_for_label }}">Username:</label>
+                            {{ form.username }}  <!-- Render the username field -->
+                        </div>
+                
+                        <div>
+                            <label for="{{ form.password.id_for_label }}">Password:</label>
+                            {{ form.password }}  <!-- Render the password field -->
+                        </div>
+                
+                        <!-- Render form errors (if any) -->
+                        {% if form.non_field_errors %}
+                            <div class="errors">
+                                {% for error in form.non_field_errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                
+                        {% if form.username.errors %}
+                            <div class="errors">
+                                {% for error in form.username.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                
+                        {% if form.password.errors %}
+                            <div class="errors">
+                                {% for error in form.password.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                
+                        <!-- Submit button -->
+                        <div>
+                            <button type="submit">Login</button>
+                        </div>
+                    </form>
+                    <!--
+                    <form action="{% url 'index' %}" method="POST" id="loginForm">
+                        {% csrf_token %}
+                        <label for="username">Enter Username:</label>
+                        <input type="text" name="username" id="username" placeholder="Enter username..." required>
+    
+                        <label for="user_password">Enter password:</label>
+                        <input type="password" name="user_password" id="user_password" placeholder="Enter password..." required>
+    
+                        <input type="submit">
+    
+                    </form>
+                    -->
+                    <p>Don't have an account?&nbsp;<a href="{% url 'signup' %}">Signup</a></p>
+
+                </div>
+                                     
+            </div>
+          
+        </main>
+
+    </body>
+</html>

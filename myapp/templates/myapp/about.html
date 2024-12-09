@@ -1,0 +1,132 @@
+{% load static %}
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>About Vtasks</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'myapp/styles.css' %}">
+        <script src="{% static 'myapp/script.js' %}"></script>
+    </head>
+    <body>   
+        <header>
+            <div class="headerContent">
+                <div class="headerTitleContainer">
+                    <img src="{% static 'myapp/assets/vtasklogoF.png' %}" height="100px" width="100px" alt="">&nbsp;
+                    <h1>: About</h1>
+              
+                </div>
+
+                <div class="userContainer">
+                    <p style="color:red;font-weight:bold;">{{ request.user.username }}</p>&nbsp;
+                    <img src="{% static 'myapp/assets/avatar_icon.png' %}" height="20px" width="20px" alt="">&nbsp;
+                    <a href="{% url 'logout_view' %}" style="color:red;"><button class="logoutBtn" style="border:1px solid black;border-radius:10px;">logout</button></a>
+
+                </div>
+                
+
+            </div>
+
+        </header>
+        <marquee direction="right" behavior="alternate">Welcome to Vtasks by Violet, your one stop shop for day to day productivity</marquee>
+
+        <!-- MAIN CONTENT-->
+        <main>
+            <div class="contentWrapper">
+                <div>
+                    <p><strong>In Summary</strong></p>
+                    <p>Vtasks is a productivity platform build for proffesional use but has also carved a niche among the hobbist.With an account you can create tasks, organize them in categories,
+                        modify task description, mark them as complete or incomplete and most importantly be notified for your day to day tasks.
+                    </p>
+                    
+                    <p><strong>FAQs</strong></p>
+                    <ol type="1">
+                        <li>
+                            <div class="">
+                                <p><strong>Is Vtask Free?</strong></p>
+                                <p><span>Yes!!</span>&nbsp;Vtasks is absolutely free.You only need to sign in with your email which will not take more than a minute</p> 
+
+                            </div>
+                           
+                        </li>
+
+                        <li>
+                            <div class="">
+                                <p><strong>What functionality does Vtask provide?</strong></p>
+                               <ol type="a">
+                                <li>Create tasks</li>
+                                <li>Organize them In categories as you wish</li>
+                                <li>View daily tasks</li>
+                                <li>Modify tasks information</li>
+                                <li>Mark as complete or incomplete</li>
+                                
+                               </ol>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="">
+                                <p><strong>Who is Vtask targeted For?</strong></p>
+                                <ol type="a">
+                                    <li>Proffessionals</li>
+                                    <li>Hobbists</li>    
+                                    <li>students</li>              
+                                    
+                                   </ol>
+                            </div>
+                        </li>
+
+                        <li>
+                           <div class="">
+                                <p><strong>Why Vtasks?</strong></p>
+                                <p>Its a Simple to use, Intuitive with a Beautiful User interface tailored for you!</p> 
+
+                            </div>
+                        </li>
+
+                        <li> 
+                            <div class="">
+                                <p><strong>If i have a problem, where do i report?</strong></p>
+                                <div class="contacts">                               
+                                    <button class="contactsItem"><img src="{% static 'myapp/assets/phone.png' %}" height="20px" width="20px" alt="">&nbsp;+254745657493</button>
+                                    <button class="contactsItem"><img src="{% static 'myapp/assets/email.webp' %}" height="20px" width="20px" alt="">&nbsp;violet@gmail.com</button>
+                
+                                </div>
+
+                            </div>
+                        </li>
+
+
+                    </ol>
+                </div>
+                
+                                                  
+            </div>
+          
+        </main>
+
+
+        <!-- FOOTER-->
+        <footer>
+            <div class="footerContent">
+                <p><i>For any help or queries contact us via:</i></p>
+                <div class="contacts">                               
+                    <button class="contactsItem"><img src="{% static 'myapp/assets/phone.png' %}" height="20px" width="20px" alt="">&nbsp;+254745657493</button>
+                    <button class="contactsItem"><img src="{% static 'myapp/assets/email.webp' %}" height="20px" width="20px" alt="">&nbsp;violet@gmail.com</button>
+
+                </div>
+                <hr style="width:100%;border:1px solid #e8e8e8;">
+                <div id="copyright">
+                    <p><i>&#169;2024 Vtasks. All rights reserved.</i></p>
+                </div>
+            </div>
+
+
+        </footer>
+
+
+    </body>
+</html>

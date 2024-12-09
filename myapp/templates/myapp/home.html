@@ -1,0 +1,166 @@
+{% load static %}
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'myapp/styles.css' %}">
+        
+    </head>
+    <body>   
+        <header>
+            <div class="headerContent">
+                <div class="headerTitleContainer">
+                    <img src="{% static 'myapp/assets/vtasklogoF.png' %}" height="100px" width="100px" alt="">&nbsp;
+                    
+                    
+              
+                </div>
+                
+                <form action="{% url 'search' %}" method="POST" id="searchForm">
+                    {% csrf_token %}
+                    <label for="taskname">Search</label>
+                    <input type="text" name="taskname" id="taskname" placeholder="Search tasks by name..." required>
+                            
+                    <input type="submit">
+
+                </form>
+
+                <div class="userContainer">
+                    
+                    <p style="color:red;font-weight:bold;">{{ request.user.username }}</p>&nbsp;
+                    <img src="{% static 'myapp/assets/avatar_icon.png' %}" height="20px" width="20px" alt="">&nbsp;
+                    <a href="{% url 'logout_view' %}" style="color:red;"><button class="logoutBtn" style="border:1px solid black;border-radius:10px;">logout</button></a>
+
+
+                </div>
+                
+
+            </div>
+
+        </header>
+        <marquee direction="right" behavior="alternate">Welcome to Vtasks by Violet, your one stop shop for day to day productivity</marquee>
+
+        <!-- MAIN CONTENT-->
+        <main>
+            <div class="contentWrapper">
+                
+                <nav>
+                    <form action="{% url 'todaystasks' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" id="today_tasks" name="today_tasks" value="today_tasks">
+
+                        <button class="functionBtn" type="submit"><img src="{% static 'myapp/assets/calendar.webp' %}" height="20px" width="20px" alt="">&nbsp;What am i doing today?</button>
+                    </form>
+                    
+                    <form action="{% url 'viewalltasks' %}" method="POST" >
+                        {% csrf_token %}
+                        <input type="hidden" id="view_all_tasks" name="view_all_tasks" value="view_all_tasks">
+                        <button class="functionBtn" type="submit"><img src="{% static 'myapp/assets/all.webp' %}" height="20px" width="20px" alt="">&nbsp;View all</button>
+                    </form>
+                    <a href="{% url 'about' %}"><button class="functionBtn"><img src="{% static 'myapp/assets/about.webp' %}" height="20px" width="20px" alt="">&nbsp;About</button></a>
+
+                    <button onclick="openNewCategoryForm()" class="functionBtn"><img src="{% static 'myapp/assets/category.webp' %}" height="20px" width="20px" alt="">&nbsp;Add new Category</button>
+                    <button onclick="openNewTaskForm()" class="functionBtn"><img src="{% static 'myapp/assets/task.webp' %}" height="20px" width="20px" alt="">&nbsp;Add new task</button>
+
+                </nav>
+                    
+                                                                        
+                <div class="all_categories">
+                    <h2>All Categories</h2>
+
+                    {% if messages %}
+
+                    <div id="responses">
+                        <button title="close" class="closeFormsButtons" onclick="closeResponsesBox()"><img src="{% static 'myapp/assets/close2_icon.png' %}" height="30px" width="30px" alt=""></button>
+                        <ul>
+                        {% for message in messages %}
+                            <li>                                
+                                <p id="responses">{{ message }}</p>
+                                
+                            </li>
+                        {% endfor %}
+                        
+                        </ul>
+                    </div>
+                    
+                    {% endif %}
+                  
+                    
+                </div>
+                                                  
+            </div>
+          
+        </main>
+
+
+        <!-- FOOTER-->
+        <footer>
+            <div class="footerContent">
+                <p><i>For any help or queries contact us via:</i></p>
+                <div class="contacts">                               
+                    <button class="contactsItem"><img src="{% static 'myapp/assets/phone.png' %}" height="20px" width="20px" alt="">&nbsp;+254745657493</button>
+                    <button class="contactsItem"><img src="{% static 'myapp/assets/email.webp' %}" height="20px" width="20px" alt="">&nbsp;violet@gmail.com</button>
+
+                </div>
+                <hr style="width:100%;border:1px solid #e8e8e8;">
+                <div id="copyright">
+                    <p><i>&#169;2024 Vtasks. All rights reserved.</i></p>
+                </div>
+            </div>
+
+
+        </footer>
+
+
+        
+        <!--**********************************************FORMS*******************************************-->
+        <!--ADD TASKS FORM-->
+        <div class="functionalityFormsWrapper" id="addTasks">
+            <button title="close" class="closeFormsButtons" onclick="closeAddTasksForm()"><img src="{% static 'myapp/assets/close2_icon.png' %}" height="30px" width="30px" alt=""></button>
+         
+            <form action="{% url 'create_task' %}" method="POST" class="functionalityForms">
+                {% csrf_token %}
+                <label for="taskName">Enter Task Name:</label>
+                <input type="text" name="taskName" id="taskName" placeholder="Enter task name ..." required>
+
+                <label for="taskDescription">Enter Task description(what you want to achieve):</label>
+                <textarea type="text" name="taskDescription" id="taskDescription" cols="50" rows="10" placeholder="Enter task details..." required></textarea>
+
+               <!-- Parse all the users categories here and have him select a category to add task to-->
+               <label for="taskCategory">Task Category:</label><br>
+               <select id="taskCategory" name="taskCategory" required>
+                   <option value="">Select Category</option>
+                   {% for category in categories %}
+                       <option value="{{ category.id }}">{{ category.categoryName }}</option>
+                   {% endfor %}
+               </select><br><br>
+
+
+                <input type="submit">
+
+            </form>
+        </div>
+
+        <div class="functionalityFormsWrapper"  id="addNewCategory">
+            <button title="close" class="closeFormsButtons" onclick="closeAddCategoryForm()"><img src="{% static 'myapp/assets/close2_icon.png' %}" height="30px" width="30px" alt=""></button>
+          
+            <!-- ADD CATEGORIES FORM DATA-->
+            <form action="{% url 'addcategory' %}" method="POST" class="functionalityForms">
+                {% csrf_token %}
+                <label for="categoryName">Enter New Tasks Category Name:</label>
+                <input type="text" name="categoryName" id="categoryName" placeholder="Enter Category name..." required>
+            
+                <input type="submit" value="Add Category">
+            </form>
+
+        </div>
+  
+
+
+        <script src="{% static 'myapp/scripts.js' %}"></script>
+    </body>
+</html>
