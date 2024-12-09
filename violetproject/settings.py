@@ -78,7 +78,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'vtasks',
-        'USER': 'theigenius',
+        'USER': 'violet',
         'PASSWORD': 'fOGC@4201',
         'HOST': 'localhost',  # Or the database server's IP address
         'PORT': '3306',       # Default MySQL port
