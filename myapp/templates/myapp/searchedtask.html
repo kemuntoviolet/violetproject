@@ -1,0 +1,83 @@
+
+{% load static %}
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'myapp/styles.css' %}">
+        <script src="{% static 'myapp/script.js' %}"></script>
+    </head>
+    <body>           
+        <header>
+            <div class="headerContent">
+               
+                <div class="headerTitleContainer">
+                    <img src="{% static 'myapp/assets/vtasklogoF.png' %}" height="140px" width="150px" alt="">&nbsp;
+                    <h1>:Search</h1>
+                </div>
+
+                <form action="" method="POST" id="searchForm">                 
+                    <input type="text" name="taskname" id="taskname" placeholder="Search tasks by name..." required>
+                            
+                    <input type="submit">
+
+                </form>
+                
+                <div class="userContainer">
+                    <p style="color:red;font-weight:bold;">{{ request.user.username }}</p>&nbsp;
+                    <img src="{% static 'myapp/assets/avatar_icon.png' %}" height="20px" width="20px" alt="">&nbsp;
+                    <a href="{% url 'logout_view' %}" style="color:red;"><button class="logoutBtn" style="border:1px solid black;border-radius:10px;">logout</button></a>
+                </div>
+            </div>
+
+        </header>
+        <main>
+            <div class="contentWrapper">
+                {% if tasks %}
+                <ul>
+                    {% for task in tasks %}
+                        <li>
+                            <strong>Task Name:</strong> {{ task.taskName }}<br>
+                            <strong>Description:</strong> {{ task.taskDescription }}<br>
+                            <strong>Status:</strong> {{ task.taskStatus|yesno:"Completed,Not Completed" }}<br>
+                            <strong>Created On:</strong> {{ task.taskCreationDate }}
+                        </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                    <p>No tasks found matching your search.</p>
+                {% endif %}
+                
+            </div>
+          
+
+        </main>
+
+
+
+        <!-- FOOTER-->
+        <footer>
+            <div class="footerContent">
+                <p><i>For any help or queries contact us via:</i></p>
+                <div class="contacts">                               
+                    <button class="contactsItem"><img src="{% static 'myapp/assets/phone.png' %}" height="20px" width="20px" alt="">&nbsp;+254745657493</button>
+                    <button class="contactsItem"><img src="{% static 'myapp/assets/email.webp' %}" height="20px" width="20px" alt="">&nbsp;kemuntoviolet7@gmail.com</button>
+
+                </div>
+                <hr style="width:100%;border:1px solid #e8e8e8;">
+                <div id="copyright">
+                    <p><i>&#169;2024 Vtasks. All rights reserved.</i></p>
+                </div>
+            </div>
+
+
+        </footer>
+
+    
+    </body>
+</html>
+

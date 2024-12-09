@@ -1,3 +1,5 @@
+
+
 {% load static %}
 
 
@@ -16,7 +18,7 @@
                
                 <div class="headerTitleContainer">
                     <img src="{% static 'myapp/assets/vtasklogoF.png' %}" height="140px" width="150px" alt="">&nbsp;
-                    <h1>:Adding new Category</h1>
+                    <h1>:Schedule</h1>
                 </div>
 
                 <form action="" method="POST" id="searchForm">                 
@@ -36,15 +38,25 @@
         </header>
         <main>
             <div class="contentWrapper">
-                {% if messages %}
-                <ul>
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-              <p>{{ current_user }}</p>
+                <h2>Tasks Scheduled for {{ scheduled_date }}</h2>
 
+                {% if tasks_for_date %}
+                    <ul>
+                        {% for task in tasks_for_date %}
+                            <li>
+                                <strong>Task Name:</strong> {{ task.taskName }}<br>
+                                <strong>Description:</strong> {{ task.taskDescription }}<br>
+                                <strong>Status:</strong> {{ task.taskStatus|yesno:"Completed,Not Completed" }}<br>
+                                <strong>Created On:</strong> {{ task.taskCreationDate }}<br>
+                                <strong>Scheduled For:</strong> {{ task.taskScheduledFor }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No tasks scheduled for {{ scheduled_date }}.</p>
+                {% endif %}
+                
+                <a href="{% url 'home' %}">Back to Home</a>
                 
             </div>
           
@@ -59,7 +71,7 @@
                 <p><i>For any help or queries contact us via:</i></p>
                 <div class="contacts">                               
                     <button class="contactsItem"><img src="{% static 'myapp/assets/phone.png' %}" height="20px" width="20px" alt="">&nbsp;+254745657493</button>
-                    <button class="contactsItem"><img src="{% static 'myapp/assets/email.webp' %}" height="20px" width="20px" alt="">&nbsp;violet@gmail.com</button>
+                    <button class="contactsItem"><img src="{% static 'myapp/assets/email.webp' %}" height="20px" width="20px" alt="">&nbsp;kemuntoviolet7@gmail.com</button>
 
                 </div>
                 <hr style="width:100%;border:1px solid #e8e8e8;">
@@ -74,3 +86,5 @@
     
     </body>
 </html>
+
+

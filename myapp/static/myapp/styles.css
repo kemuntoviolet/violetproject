@@ -134,7 +134,52 @@ marquee{
     margin-bottom: 10px;
 }
 
+.category {
+    cursor: pointer;
+    font-weight: bold;
+}
 
+.category:hover{
+    cursor: pointer;
+    font-weight: bold;
+    color: red;
+    text-decoration: underline;
+}
+
+
+.category-tasks-form {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.tasks-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+
+.tasks-list li {
+    border: 1px solid #e8e8e8;
+    list-style-type: none;
+    padding: 10px 10px 10px 10px ;
+    margin: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+}
+.add-task-form {
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid #ccc;
+}
+.functionalityButton{
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.functionalityButton:hover{
+    cursor: pointer;
+    background-color: #00B8FF;
+}
 
 /**************************************************MAIN CONTENT WRAPPER********************************************/
 main{
@@ -151,8 +196,8 @@ main{
 
 /*HOME*/
 nav{
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 30%;
+    margin-right: 30%;
     height: 40px;
     display: flex;
     flex-direction: row;
